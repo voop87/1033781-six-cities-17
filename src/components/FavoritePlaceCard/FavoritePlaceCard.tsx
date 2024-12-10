@@ -1,37 +1,31 @@
 import { Link } from 'react-router-dom';
-import { Offer } from '../../types/types';
 import { AppRoute } from '../../const';
+import { FavoriteOffer } from '../../types/types';
 
-type PlaceCardProps = {
-  offer: Offer;
-  onChangeActiveOfferHandle: (id: string | null) => void;
+type FavoritePlaceCardProps = {
+  offer: FavoriteOffer;
 };
 
-function PlaceCard({ offer, onChangeActiveOfferHandle }: PlaceCardProps) {
+function FavoritePlaceCard({ offer }: FavoritePlaceCardProps) {
   return (
-    <article
-      className="cities__card place-card"
-      onMouseEnter={() => onChangeActiveOfferHandle(offer.id)}
-      onMouseLeave={() => onChangeActiveOfferHandle(null)}
-    >
+    <article className="favorites__card place-card">
       {offer.isPremium && (
         <div className="place-card__mark">
           <span>Premium</span>
         </div>
       )}
-
-      <div className="cities__image-wrapper place-card__image-wrapper">
+      <div className="favorites__image-wrapper place-card__image-wrapper">
         <Link to={AppRoute.Offer}>
           <img
             className="place-card__image"
-            src={offer.images[0]}
-            width="260"
-            height="200"
+            src={offer.previewImage}
+            width="150"
+            height="110"
             alt="Place image"
           />
         </Link>
       </div>
-      <div className="place-card__info">
+      <div className="favorites__card-info place-card__info">
         <div className="place-card__price-wrapper">
           <div className="place-card__price">
             <b className="place-card__price-value">&euro;{offer.price}</b>
@@ -66,4 +60,4 @@ function PlaceCard({ offer, onChangeActiveOfferHandle }: PlaceCardProps) {
   );
 }
 
-export default PlaceCard;
+export default FavoritePlaceCard;

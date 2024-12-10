@@ -1,3 +1,6 @@
+import { Link } from 'react-router-dom';
+import { AppRoute } from '../../const';
+
 function Page404() {
   return (
     <div className="page page--gray page--login">
@@ -5,7 +8,7 @@ function Page404() {
         <div className="container">
           <div className="header__wrapper">
             <div className="header__left">
-              <a className="header__logo-link" href="main.html">
+              <Link to={AppRoute.Main} className="header__logo-link">
                 <img
                   className="header__logo"
                   src="img/logo.svg"
@@ -13,7 +16,7 @@ function Page404() {
                   width="81"
                   height="41"
                 />
-              </a>
+              </Link>
             </div>
           </div>
         </div>
@@ -23,7 +26,7 @@ function Page404() {
         <div className="page__login-container container">
           <section className="login">
             <h1 className="login__title">Ooops! 404 Page not found!</h1>
-            <a href="main.html">&lt;&lt; Return to main page</a>
+            <Link to={AppRoute.Main}>&lt;&lt; Return to main page</Link>
           </section>
         </div>
       </main>
