@@ -12,7 +12,6 @@ function MainPage({ placeCardList }: MainPageProps) {
   function changeActiveOfferHandle(id: string | null) {
     setActiveOffer(id);
   }
-  console.log(activeOffer);
 
   return (
     <div className="page page--gray page--main">

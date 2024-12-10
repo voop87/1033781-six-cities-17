@@ -30,7 +30,6 @@ function CommentForm() {
 
   function onFormSubmitHandle(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    console.log(formData);
     setFormData(initialState);
   }
 
@@ -142,7 +141,8 @@ function CommentForm() {
         placeholder="Tell how was your stay, what you like and what can be improved"
         onChange={(e) => onInputChangeHandle(e, 'review')}
         value={formData.review}
-      ></textarea>
+      >
+      </textarea>
       <div className="reviews__button-wrapper">
         <p className="reviews__help">
           To submit review please make sure to set{' '}

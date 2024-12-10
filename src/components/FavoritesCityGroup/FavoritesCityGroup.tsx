@@ -17,9 +17,7 @@ function FavoritesCityGroup({ offers, city }: FavoritesCityGroupProps) {
         </div>
       </div>
       <div className="favorites__places">
-        {offers.map((offer) => {
-          return <FavoritePlaceCard key={offer.id} offer={offer} />;
-        })}
+        {offers.map((offer) => (<FavoritePlaceCard key={offer.id} offer={offer} />))}
       </div>
     </li>
   );
