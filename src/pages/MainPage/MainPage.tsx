@@ -1,12 +1,18 @@
-import { PlaceCardType } from '../../types/types';
+import { useState } from 'react';
+import { Offer } from '../../types/types';
 import Header from '../../components/Header/Header';
-import PlaceCard from '../../components/PlaceCard/PlaceCard';
+import PlaceCardList from '../../components/PlaceCardList/PlaceCardList';
 
 type MainPageProps = {
-  placeCardList: PlaceCardType[];
+  placeCardList: Offer[];
 };
 
 function MainPage({ placeCardList }: MainPageProps) {
+  const [activeOffer, setActiveOffer] = useState<string | null>(null);
+  function changeActiveOfferHandle(id: string | null) {
+    setActiveOffer(id);
+  }
+
   return (
     <div className="page page--gray page--main">
       <Header />
@@ -53,7 +59,9 @@ function MainPage({ placeCardList }: MainPageProps) {
           <div className="cities__places-container container">
             <section className="cities__places places">
               <h2 className="visually-hidden">Places</h2>
-              <b className="places__found">312 places to stay in Amsterdam</b>
+              <b className="places__found">
+                {placeCardList.length} places to stay in Amsterdam
+              </b>
               <form className="places__sorting" action="#" method="get">
                 <span className="places__sorting-caption">Sort by</span>
                 <span className="places__sorting-type" tabIndex={0}>
@@ -80,11 +88,11 @@ function MainPage({ placeCardList }: MainPageProps) {
                   </li>
                 </ul>
               </form>
-              <div className="cities__places-list places__list tabs__content">
-                {placeCardList.map((item) => (
-                  <PlaceCard key={item.id} {...item} />
-                ))}
-              </div>
+
+              <PlaceCardList
+                onChangeActiveOfferHandle={changeActiveOfferHandle}
+                placeCardList={placeCardList}
+              />
             </section>
             <div className="cities__right-section">
               <section className="cities__map map"></section>

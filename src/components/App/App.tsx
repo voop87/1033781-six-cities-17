@@ -5,15 +5,16 @@ import LoginPage from '../../pages/LoginPage/LoginPage';
 import OfferPage from '../../pages/OfferPage/OfferPage';
 import Page404 from '../../pages/Page404/Page404';
 import PrivateRoute from '../PrivateRoute/PrivateRoute';
-import { PlaceCardType } from '../../types/types';
+import { FavoriteOffer, Offer } from '../../types/types';
 import { AppRoute, AuthorizationStatus } from '../../const';
 import ScrollToTop from '../ScrollToTop/ScrollToTop';
 
 type AppScreenProps = {
-  placeCardList: PlaceCardType[];
+  placeCardList: Offer[];
+  favoritesList: FavoriteOffer[];
 };
 
-function App({ placeCardList }: AppScreenProps) {
+function App({ placeCardList, favoritesList }: AppScreenProps) {
   return (
     <BrowserRouter>
       <ScrollToTop />
@@ -23,11 +24,13 @@ function App({ placeCardList }: AppScreenProps) {
           element={<MainPage placeCardList={placeCardList} />}
         />
         <Route path={AppRoute.Login} element={<LoginPage />} />
-        <Route path={AppRoute.Favorites} element={
-          <PrivateRoute authorizationStatus={AuthorizationStatus.NoAuth} >
-            <FavoritesPage />
-          </PrivateRoute>
-        }
+        <Route
+          path={AppRoute.Favorites}
+          element={
+            <PrivateRoute authorizationStatus={AuthorizationStatus.Auth}>
+              <FavoritesPage favoritesList={favoritesList} />
+            </PrivateRoute>
+          }
         />
         <Route path={AppRoute.Offer} element={<OfferPage />} />
         <Route path="*" element={<Page404 />} />
