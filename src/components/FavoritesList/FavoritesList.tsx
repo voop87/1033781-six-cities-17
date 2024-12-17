@@ -11,7 +11,7 @@ function FavoritesList({ favoritesList }: FavotitesListProps) {
 
   return (
     <ul className="favorites__list">
-      {Object.entries(favoriteOfferCityGroup).map(([city, offers]) => (
+      {favoritesList && Object.entries(favoriteOfferCityGroup).map(([city, offers]) => (
         <FavoritesCityGroup key={city} offers={offers} city={city} />
       ))}
     </ul>
