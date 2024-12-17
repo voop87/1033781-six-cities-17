@@ -14,7 +14,7 @@ export function getFavoriteOfferCityGroup(
   offers.forEach((offer) => {
     const name: City['name'] = offer.city.name;
 
-    if (result[name]) {
+    if (result[name] && result[name] !== undefined) {
       result[name].push(offer);
     } else {
       result[name] = [offer];
