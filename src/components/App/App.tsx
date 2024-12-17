@@ -11,7 +11,7 @@ import ScrollToTop from '../ScrollToTop/ScrollToTop';
 
 type AppScreenProps = {
   placeCardList: Offer[];
-  favoritesList: FavoriteOffer[];
+  favoritesList: FavoriteOffer[] | undefined;
 };
 
 function App({ placeCardList, favoritesList }: AppScreenProps) {

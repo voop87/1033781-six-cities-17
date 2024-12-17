@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { AppRoute } from '../../const';
 
 type FavoritesProps = {
-  favoritesList: FavoriteOffer[];
+  favoritesList: FavoriteOffer[] | undefined;
 };
 
 function FavoritesPage({ favoritesList }: FavoritesProps) {
@@ -13,7 +13,7 @@ function FavoritesPage({ favoritesList }: FavoritesProps) {
     <div className="page">
       <Header />
 
-      {favoritesList.length === 0 && (
+      {favoritesList === undefined && (
         <main className="page__main page__main--favorites page__main--favorites-empty">
           <div className="page__favorites-container container">
             <section className="favorites favorites--empty">
@@ -39,8 +39,7 @@ function FavoritesPage({ favoritesList }: FavoritesProps) {
             </section>
           </div>
         </main>
-        )
-      }
+      )}
 
       <footer className="footer container">
         <Link className="footer__logo-link" to={AppRoute.Main}>
