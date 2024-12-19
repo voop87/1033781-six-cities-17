@@ -24,7 +24,7 @@ function PlaceCard({ offer, onChangeActiveOfferHandle }: PlaceCardProps) {
         <Link to={AppRoute.Offer}>
           <img
             className="place-card__image"
-            src={offer.images[0]}
+            src={offer.previewImage}
             width="260"
             height="200"
             alt="Place image"

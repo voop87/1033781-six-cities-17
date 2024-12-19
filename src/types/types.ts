@@ -1,24 +1,33 @@
+export type CityName =
+  | 'Paris'
+  | 'Cologne'
+  | 'Brussels'
+  | 'Amsterdam'
+  | 'Hamburg'
+  | 'Dusseldorf';
 type Location = {
   latitude: number;
   longitude: number;
   zoom: number;
 };
 
+export type OfferType = 'room' | 'apartment' | 'house' | 'hotel';
+
+export type Host = {
+  name: string;
+  avatarUrl: string;
+  isPro: boolean;
+};
+
 export type City = {
-  name:
-    | 'Paris'
-    | 'Cologne'
-    | 'Brussels'
-    | 'Amsterdam'
-    | 'Hamburg'
-    | 'Dusseldorf';
+  name: CityName;
   location: Location;
 };
 
-export type Offer = {
+export type DetailedOffer = {
   id: string;
   title: string;
-  type: 'room' | 'apartment' | 'house' | 'hotel';
+  type: OfferType;
   price: number;
   city: City;
   location: Location;
@@ -28,19 +37,15 @@ export type Offer = {
   description: string;
   bedrooms: number;
   goods: [string];
-  host: {
-    name: string;
-    avatarUrl: string;
-    isPro: boolean;
-  };
+  host: Host;
   images: [string];
   maxAdults: number;
 };
 
-export type FavoriteOffer = {
+export type Offer = {
   id: string;
   title: string;
-  type: 'room' | 'apartment' | 'house' | 'hotel';
+  type: OfferType;
   price: number;
   city: City;
   location: Location;

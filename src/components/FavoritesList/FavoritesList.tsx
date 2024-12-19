@@ -1,9 +1,9 @@
-import { FavoriteOffer } from '../../types/types';
+import { Offer } from '../../types/types';
 import { getFavoriteOfferCityGroup } from '../../utils/getFavoriteOfferCityGroup';
 import FavoritesCityGroup from '../FavoritesCityGroup/FavoritesCityGroup';
 
 type FavotitesListProps = {
-  favoritesList: FavoriteOffer[];
+  favoritesList: Offer[];
 };
 
 function FavoritesList({ favoritesList }: FavotitesListProps) {
@@ -11,9 +11,10 @@ function FavoritesList({ favoritesList }: FavotitesListProps) {
 
   return (
     <ul className="favorites__list">
-      {favoritesList && Object.entries(favoriteOfferCityGroup).map(([city, offers]) => (
-        <FavoritesCityGroup key={city} offers={offers} city={city} />
-      ))}
+      {favoritesList &&
+        Object.entries(favoriteOfferCityGroup).map(([city, offers]) => (
+          <FavoritesCityGroup key={city} offers={offers} city={city} />
+        ))}
     </ul>
   );
 }

@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom';
 import { AppRoute } from '../../const';
-import { FavoriteOffer } from '../../types/types';
+import { Offer } from '../../types/types';
 
 type FavoritePlaceCardProps = {
-  offer: FavoriteOffer;
+  offer: Offer;
 };
 
 function FavoritePlaceCard({ offer }: FavoritePlaceCardProps) {

@@ -1,8 +1,8 @@
-import { FavoriteOffer } from '../../types/types';
+import { Offer } from '../../types/types';
 import FavoritePlaceCard from '../FavoritePlaceCard/FavoritePlaceCard';
 
 type FavoritesCityGroupProps = {
-  offers: FavoriteOffer[];
+  offers: Offer[];
   city: string;
 };
 
@@ -17,7 +17,9 @@ function FavoritesCityGroup({ offers, city }: FavoritesCityGroupProps) {
         </div>
       </div>
       <div className="favorites__places">
-        {offers.map((offer) => (<FavoritePlaceCard key={offer.id} offer={offer} />))}
+        {offers.map((offer) => (
+          <FavoritePlaceCard key={offer.id} offer={offer} />
+        ))}
       </div>
     </li>
   );
