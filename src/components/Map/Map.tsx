@@ -49,7 +49,8 @@ function Map({ city, activeOffer, offers }: MapProps) {
       className="cities__map map"
       style={{ height: '500px' }}
       ref={mapRef}
-    ></section>
+    >
+    </section>
   );
 }
 
