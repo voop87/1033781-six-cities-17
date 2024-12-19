@@ -1,15 +1,17 @@
 import { useState } from 'react';
-import { Offer } from '../../types/types';
+import { DetailedOffer } from '../../types/types';
 import Header from '../../components/Header/Header';
 import PlaceCardList from '../../components/PlaceCardList/PlaceCardList';
 import Map from '../../components/Map/Map';
 
 type MainPageProps = {
-  placeCardList: Offer[];
+  placeCardList: DetailedOffer[];
 };
 
 function MainPage({ placeCardList }: MainPageProps) {
-  const [activeOffer, setActiveOffer] = useState<Offer | undefined>(undefined);
+  const [activeOffer, setActiveOffer] = useState<DetailedOffer | undefined>(
+    undefined
+  );
   function changeActiveOfferHandle(id: string | null) {
     const currentPoint = placeCardList.find((point) => point.id === id);
     setActiveOffer(currentPoint);

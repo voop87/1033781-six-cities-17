@@ -1,6 +1,6 @@
-import { Offer } from '../types/types';
+import { DetailedOffer } from '../types/types';
 
-export const OFFERS_DATA: Offer[] = [
+export const OFFERS_DATA: DetailedOffer[] = [
   {
     id: '1af6f711-c28d-4121-82cd-e0b462a27f00',
     title: 'Beautiful & luxurious studio at great location',

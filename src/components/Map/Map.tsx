@@ -1,14 +1,14 @@
 import leaflet from 'leaflet';
 import 'leaflet/dist/leaflet.css';
-import { City, Offer } from '../../types/types';
+import { City, DetailedOffer } from '../../types/types';
 import { useEffect, useRef } from 'react';
 import useMap from '../../hooks/useMap';
 import { URL_MARKER_CURRENT, URL_MARKER_DEFAULT } from '../../const';
 
 type MapProps = {
   city: City;
-  activeOffer: Offer | undefined;
-  offers: Offer[];
+  activeOffer: DetailedOffer | undefined;
+  offers: DetailedOffer[];
 };
 
 function Map({ city, activeOffer, offers }: MapProps) {
@@ -49,8 +49,7 @@ function Map({ city, activeOffer, offers }: MapProps) {
       className="cities__map map"
       style={{ height: '500px' }}
       ref={mapRef}
-    >
-    </section>
+    ></section>
   );
 }
 

@@ -1,6 +1,6 @@
-import { FavoriteOffer } from '../types/types';
+import { Offer } from '../types/types';
 
-export const FAVORITES_DATA: FavoriteOffer[] = [
+export const FAVORITES_DATA: Offer[] = [
   {
     id: '1af6f711-c28d-4121-82cd-e0b462a27f00',
     title: 'Beautiful & luxurious studio at great location',
