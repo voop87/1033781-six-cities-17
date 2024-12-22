@@ -1,16 +1,20 @@
 import { useState } from 'react';
-import { Offer } from '../../types/types';
+import { DetailedOffer } from '../../types/types';
 import Header from '../../components/Header/Header';
 import PlaceCardList from '../../components/PlaceCardList/PlaceCardList';
+import Map from '../../components/Map/Map';
 
 type MainPageProps = {
-  placeCardList: Offer[];
+  placeCardList: DetailedOffer[];
 };
 
 function MainPage({ placeCardList }: MainPageProps) {
-  const [activeOffer, setActiveOffer] = useState<string | null>(null);
+  const [activeOffer, setActiveOffer] = useState<DetailedOffer | undefined>(
+    undefined
+  );
   function changeActiveOfferHandle(id: string | null) {
-    setActiveOffer(id);
+    const currentPoint = placeCardList.find((point) => point.id === id);
+    setActiveOffer(currentPoint);
   }
 
   return (
@@ -95,7 +99,18 @@ function MainPage({ placeCardList }: MainPageProps) {
               />
             </section>
             <div className="cities__right-section">
-              <section className="cities__map map"></section>
+              <Map
+                activeOffer={activeOffer}
+                offers={placeCardList}
+                city={{
+                  name: 'Amsterdam',
+                  location: {
+                    latitude: 52.3909553943508,
+                    longitude: 4.85309666406198,
+                    zoom: 8,
+                  },
+                }}
+              />
             </div>
           </div>
         </div>

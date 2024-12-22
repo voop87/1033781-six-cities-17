@@ -5,13 +5,13 @@ import LoginPage from '../../pages/LoginPage/LoginPage';
 import OfferPage from '../../pages/OfferPage/OfferPage';
 import Page404 from '../../pages/Page404/Page404';
 import PrivateRoute from '../PrivateRoute/PrivateRoute';
-import { FavoriteOffer, Offer } from '../../types/types';
+import { DetailedOffer, Offer } from '../../types/types';
 import { AppRoute, AuthorizationStatus } from '../../const';
 import ScrollToTop from '../ScrollToTop/ScrollToTop';
 
 type AppScreenProps = {
-  placeCardList: Offer[];
-  favoritesList: FavoriteOffer[];
+  placeCardList: DetailedOffer[];
+  favoritesList: Offer[] | undefined;
 };
 
 function App({ placeCardList, favoritesList }: AppScreenProps) {

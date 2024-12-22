@@ -1,11 +1,11 @@
 import Header from '../../components/Header/Header';
 import FavoritesList from '../../components/FavoritesList/FavoritesList';
-import { FavoriteOffer } from '../../types/types';
+import { Offer } from '../../types/types';
 import { Link } from 'react-router-dom';
 import { AppRoute } from '../../const';
 
 type FavoritesProps = {
-  favoritesList: FavoriteOffer[];
+  favoritesList: Offer[] | undefined;
 };
 
 function FavoritesPage({ favoritesList }: FavoritesProps) {
@@ -13,7 +13,7 @@ function FavoritesPage({ favoritesList }: FavoritesProps) {
     <div className="page">
       <Header />
 
-      {!favoritesList && (
+      {favoritesList === undefined && (
         <main className="page__main page__main--favorites page__main--favorites-empty">
           <div className="page__favorites-container container">
             <section className="favorites favorites--empty">

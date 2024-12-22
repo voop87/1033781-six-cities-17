@@ -1,9 +1,11 @@
-import { City, FavoriteOffer } from '../types/types';
+import { CityName, Offer } from '../types/types';
 
-type FavoritesOffersGroup = Partial<Record<City['name'], FavoriteOffer[]>>;
+type FavoritesOffersGroup = {
+  [key in Offer['city']['name']]?: Offer[];
+};
 
 export function getFavoriteOfferCityGroup(
-  offers: FavoriteOffer[]
+  offers: Offer[]
 ): FavoritesOffersGroup {
   const result: FavoritesOffersGroup = {};
 
@@ -11,14 +13,11 @@ export function getFavoriteOfferCityGroup(
     return result;
   }
 
-  offers.forEach((offer) => {
-    const name: City['name'] = offer.city.name;
+  offers.forEach((offer: Offer) => {
+    const name: CityName = offer.city.name;
 
-    if (result[name]) {
-      result[name].push(offer);
-    } else {
-      result[name] = [offer];
-    }
+    result[name] = result[name] ?? [];
+    result[name]?.push(offer);
   });
   return result;
 }

@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom';
-import { Offer } from '../../types/types';
+import { DetailedOffer } from '../../types/types';
 import { AppRoute } from '../../const';
 
 type PlaceCardProps = {
-  offer: Offer;
+  offer: DetailedOffer;
   onChangeActiveOfferHandle: (id: string | null) => void;
 };
 

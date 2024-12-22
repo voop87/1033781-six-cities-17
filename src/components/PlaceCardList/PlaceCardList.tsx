@@ -1,8 +1,8 @@
-import { Offer } from '../../types/types';
+import { DetailedOffer } from '../../types/types';
 import PlaceCard from '../PlaceCard/PlaceCard';
 
 type PlaceCardListProps = {
-  placeCardList: Offer[];
+  placeCardList: DetailedOffer[];
   onChangeActiveOfferHandle: (id: string | null) => void;
 };
 
