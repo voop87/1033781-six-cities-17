@@ -96,6 +96,7 @@ function MainPage({ placeCardList }: MainPageProps) {
               <PlaceCardList
                 onChangeActiveOfferHandle={changeActiveOfferHandle}
                 placeCardList={placeCardList}
+                type="cities"
               />
             </section>
             <div className="cities__right-section">
@@ -107,9 +108,10 @@ function MainPage({ placeCardList }: MainPageProps) {
                   location: {
                     latitude: 52.3909553943508,
                     longitude: 4.85309666406198,
-                    zoom: 8,
+                    zoom: 11,
                   },
                 }}
+                type="cities"
               />
             </div>
           </div>

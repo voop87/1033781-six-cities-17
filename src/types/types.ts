@@ -5,6 +5,7 @@ export type CityName =
   | 'Amsterdam'
   | 'Hamburg'
   | 'Dusseldorf';
+
 type Location = {
   latitude: number;
   longitude: number;
@@ -53,4 +54,17 @@ export type Offer = {
   isPremium: boolean;
   rating: number;
   previewImage: string;
+};
+
+export type Review = {
+  id: string;
+  date: string;
+  user: Host;
+  comment: string;
+  rating: number;
+};
+
+export type NewReview = {
+  comment: string;
+  rating: number;
 };
