@@ -5,16 +5,17 @@ import LoginPage from '../../pages/LoginPage/LoginPage';
 import OfferPage from '../../pages/OfferPage/OfferPage';
 import Page404 from '../../pages/Page404/Page404';
 import PrivateRoute from '../PrivateRoute/PrivateRoute';
-import { DetailedOffer, Offer } from '../../types/types';
+import { DetailedOffer, Offer, Review } from '../../types/types';
 import { AppRoute, AuthorizationStatus } from '../../const';
 import ScrollToTop from '../ScrollToTop/ScrollToTop';
 
 type AppScreenProps = {
   placeCardList: DetailedOffer[];
   favoritesList: Offer[] | undefined;
+  reviewsList: Review[];
 };
 
-function App({ placeCardList, favoritesList }: AppScreenProps) {
+function App({ placeCardList, favoritesList, reviewsList }: AppScreenProps) {
   return (
     <BrowserRouter>
       <ScrollToTop />
@@ -32,7 +33,15 @@ function App({ placeCardList, favoritesList }: AppScreenProps) {
             </PrivateRoute>
           }
         />
-        <Route path={AppRoute.Offer} element={<OfferPage />} />
+        <Route
+          path={AppRoute.Offer}
+          element={
+            <OfferPage
+              placeCardList={placeCardList}
+              reviewsList={reviewsList}
+            />
+          }
+        />
         <Route path="*" element={<Page404 />} />
       </Routes>
     </BrowserRouter>

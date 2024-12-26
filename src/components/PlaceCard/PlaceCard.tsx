@@ -1,16 +1,16 @@
 import { Link } from 'react-router-dom';
 import { DetailedOffer } from '../../types/types';
-import { AppRoute } from '../../const';
 
 type PlaceCardProps = {
   offer: DetailedOffer;
   onChangeActiveOfferHandle: (id: string | null) => void;
+  type: 'near-places' | 'cities';
 };
 
-function PlaceCard({ offer, onChangeActiveOfferHandle }: PlaceCardProps) {
+function PlaceCard({ offer, onChangeActiveOfferHandle, type }: PlaceCardProps) {
   return (
     <article
-      className="cities__card place-card"
+      className={`${type}__card place-card`}
       onMouseEnter={() => onChangeActiveOfferHandle(offer.id)}
       onMouseLeave={() => onChangeActiveOfferHandle(null)}
     >
@@ -20,8 +20,8 @@ function PlaceCard({ offer, onChangeActiveOfferHandle }: PlaceCardProps) {
         </div>
       )}
 
-      <div className="cities__image-wrapper place-card__image-wrapper">
-        <Link to={AppRoute.Offer}>
+      <div className={`${type}__image-wrapper place-card__image-wrapper`}>
+        <Link to={`/offer/${offer.id}`}>
           <img
             className="place-card__image"
             src={offer.images[0]}
@@ -58,7 +58,7 @@ function PlaceCard({ offer, onChangeActiveOfferHandle }: PlaceCardProps) {
           </div>
         </div>
         <h2 className="place-card__name">
-          <Link to={AppRoute.Offer}>{offer.title}</Link>
+          <Link to={`/offer/${offer.id}`}>{offer.title}</Link>
         </h2>
         <p className="place-card__type">{offer.type}</p>
       </div>

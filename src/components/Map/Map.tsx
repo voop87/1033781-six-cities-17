@@ -9,9 +9,10 @@ type MapProps = {
   city: City;
   activeOffer: DetailedOffer | undefined;
   offers: DetailedOffer[];
+  type: 'cities' | 'offer';
 };
 
-function Map({ city, activeOffer, offers }: MapProps) {
+function Map({ city, activeOffer, offers, type }: MapProps) {
   const mapRef = useRef(null);
   const map = useMap(mapRef, city);
 
@@ -46,8 +47,8 @@ function Map({ city, activeOffer, offers }: MapProps) {
 
   return (
     <section
-      className="cities__map map"
-      style={{ height: '500px' }}
+      className={`${type}__map map`}
+      style={{ height: '570px' }}
       ref={mapRef}
     >
     </section>
