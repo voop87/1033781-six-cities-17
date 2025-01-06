@@ -1,3 +1,5 @@
+import { store } from '../store';
+
 export type CityName =
   | 'Paris'
   | 'Cologne'
@@ -68,3 +70,7 @@ export type NewReview = {
   comment: string;
   rating: number;
 };
+
+export type State = ReturnType<typeof store.getState>;
+
+export type AppDispatch = typeof store.dispatch;
