@@ -3,11 +3,11 @@ import { DetailedOffer } from '../types/types';
 export const OFFERS_DATA: DetailedOffer[] = [
   {
     id: '1af6f711-c28d-4121-82cd-e0b462a27f00',
-    title: 'Beautiful & luxurious studio at great location',
+    title: 'Beautiful & luxurious studio at Paris',
     type: 'apartment',
     price: 120,
     city: {
-      name: 'Amsterdam',
+      name: 'Paris',
       location: {
         latitude: 52.3909553943508,
         longitude: 4.85309666406198,
