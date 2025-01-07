@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { CityName, DetailedOffer } from '../../types/types';
+import { CityName, DetailedOffer, State } from '../../types/types';
 import Header from '../../components/Header/Header';
 import PlaceCardList from '../../components/PlaceCardList/PlaceCardList';
 import Map from '../../components/Map/Map';
@@ -8,6 +8,9 @@ import { changeCity, getCityOffers } from '../../store/action';
 import { store } from '../../store';
 import { getMockOffers } from '../../mocks/getMockOffers';
 import { OFFERS_DATA } from '../../mocks/offers';
+import Sorting from '../../components/Sorting/Sorting';
+import { sortOffers } from '../../utils/sortOffers';
+import { useSelector } from 'react-redux';
 
 type MainPageProps = {
   placeCardList: DetailedOffer[];
@@ -28,6 +31,10 @@ function MainPage({ placeCardList, currentCity }: MainPageProps) {
     store.dispatch(getCityOffers(getMockOffers(OFFERS_DATA, city)));
   }
 
+  const currentSort = useSelector((state: State) => state.currentSort);
+  const sortedOffers = sortOffers(placeCardList, currentSort);
+
+  //узнать как сделать, чтобы при переключении города изменялось корректно кол-во маркеров на карте
   return (
     <div className="page page--gray page--main">
       <Header />
@@ -50,43 +57,18 @@ function MainPage({ placeCardList, currentCity }: MainPageProps) {
                 <b className="places__found">
                   {placeCardList.length} places to stay in {currentCity}
                 </b>
-                <form className="places__sorting" action="#" method="get">
-                  <span className="places__sorting-caption">Sort by</span>
-                  <span className="places__sorting-type" tabIndex={0}>
-                    Popular
-                    <svg className="places__sorting-arrow" width="7" height="4">
-                      <use xlinkHref="#icon-arrow-select"></use>
-                    </svg>
-                  </span>
-                  <ul className="places__options places__options--custom places__options--opened">
-                    <li
-                      className="places__option places__option--active"
-                      tabIndex={0}
-                    >
-                      Popular
-                    </li>
-                    <li className="places__option" tabIndex={0}>
-                      Price: low to high
-                    </li>
-                    <li className="places__option" tabIndex={0}>
-                      Price: high to low
-                    </li>
-                    <li className="places__option" tabIndex={0}>
-                      Top rated first
-                    </li>
-                  </ul>
-                </form>
+                <Sorting />
 
                 <PlaceCardList
                   onChangeActiveOfferHandle={changeActiveOfferHandle}
-                  placeCardList={placeCardList}
+                  placeCardList={sortedOffers}
                   type="cities"
                 />
               </section>
               <div className="cities__right-section">
                 <Map
                   activeOffer={activeOffer}
-                  offers={placeCardList}
+                  offers={sortedOffers}
                   city={{
                     name: 'Amsterdam',
                     location: {
