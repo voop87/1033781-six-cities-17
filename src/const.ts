@@ -25,3 +25,10 @@ export const CITIES: CityName[] = [
   'Hamburg',
   'Dusseldorf',
 ];
+
+export enum SortingType {
+  Popular = 'Popular',
+  PriceLow = 'Price: low to high',
+  PriceHigh = 'Price: high to low',
+  Rating = 'Top rated first',
+}

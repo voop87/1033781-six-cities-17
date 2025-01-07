@@ -23,7 +23,7 @@ function Map({ city, activeOffer, offers, type }: MapProps) {
   const currentCustomIcon = leaflet.icon({
     iconUrl: URL_MARKER_CURRENT,
   });
-
+  // Узнать можно ли исключить как-то currentCustomIcon и defaultCustomIcon из зависимостей (варнинг линтера)
   useEffect(() => {
     if (map) {
       offers.forEach((offer) => {
@@ -43,7 +43,7 @@ function Map({ city, activeOffer, offers, type }: MapProps) {
           .addTo(map);
       });
     }
-  }, [map, offers, activeOffer]);
+  }, [map, offers, activeOffer, currentCustomIcon, defaultCustomIcon]);
 
   return (
     <section
